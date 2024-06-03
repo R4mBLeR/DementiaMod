@@ -18,11 +18,16 @@ public class DementiaThread extends Thread {
                 ex.printStackTrace();
             }
             for (ServerPlayer player : DementiaMod.currentServer.getPlayerList().getPlayers()) {
-                player.setExperienceLevels(cooldownTime/1000); //DEBUG
-                int itemsRem = Config.MAX_COUNT.get();
-                while (!player.getInventory().isEmpty() || itemsRem > 0) {
-                    player.getInventory().items.get(random.nextInt(player.getInventory().items.size())).setCount(0);
-                    itemsRem--;
+                //player.setExperienceLevels(cooldownTime / 1000); //DEBUG
+                for (int remaining = Config.MAX_COUNT.get(); remaining > 0; remaining--) {
+                    if (player.getInventory().isEmpty()) {
+                        break;
+                    }
+                    int index = random.nextInt(36);
+                    while (player.getInventory().getItem(index).isEmpty()) {
+                        index = random.nextInt(36);
+                    }
+                    player.getInventory().getItem(index).setCount(0);
                 }
 
             }

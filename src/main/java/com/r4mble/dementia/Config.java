@@ -13,8 +13,8 @@ public class Config {
     static {
         BUILDER.push("Dementia config");
 
-        MIN_COOLDOWN = BUILDER.comment("Minimun cooldown before things go missing ").define("MIN_COOLDOWN", 0);
-        MAX_COOLDOWN = BUILDER.comment("Maximum cooldown before things go missing").define("MAX_COOLDOWN", 30);
+        MIN_COOLDOWN = BUILDER.comment("Minimun cooldown before things go missing ").define("MIN_COOLDOWN", 60);
+        MAX_COOLDOWN = BUILDER.comment("Maximum cooldown before things go missing").define("MAX_COOLDOWN", 180);
         MAX_COUNT = BUILDER.comment("Maximum items count to missing").define("MAX_COUNT", 3);
         BUILDER.pop();
         SPEC = BUILDER.build();

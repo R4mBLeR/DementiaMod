@@ -6,9 +6,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.r4mble.dementia.DementiaMod;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.OutgoingChatMessage;
-import net.minecraft.network.chat.PlayerChatMessage;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
 
@@ -20,16 +18,13 @@ public class DementiaStartCommand {
 
     private static int execute(CommandContext<CommandSourceStack> command) {
         if (command.getSource().getEntity() instanceof Player) {
-            Player player = command.getSource().getPlayer();
             if (DementiaMod.dementia == null) {
                 DementiaMod.currentServer = command.getSource().getServer();
                 DementiaMod.dementia = new DementiaThread();
                 DementiaMod.dementia.start();
-                PlayerChatMessage chatMessage = PlayerChatMessage.unsigned(player.getUUID(), "Dementia is started!");
-                command.getSource().getPlayer().sendChatMessage(new OutgoingChatMessage.Player(chatMessage), false, ChatType.bind(ChatType.CHAT, player));
+                command.getSource().getPlayer().sendSystemMessage(Component.literal("Dementia is started!"));
             } else {
-                PlayerChatMessage chatMessage = PlayerChatMessage.unsigned(player.getUUID(), "Dementia is already started.");
-                command.getSource().getPlayer().sendChatMessage(new OutgoingChatMessage.Player(chatMessage), false, ChatType.bind(ChatType.CHAT, player));
+                command.getSource().getPlayer().sendSystemMessage(Component.literal("Dementia is already started."));
             }
         }
         return Command.SINGLE_SUCCESS;
