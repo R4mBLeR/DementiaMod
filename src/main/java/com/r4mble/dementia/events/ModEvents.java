@@ -1,21 +1,21 @@
 package com.r4mble.dementia.events;
 
 import com.r4mble.dementia.DementiaMod;
-import com.r4mble.dementia.commands.DementiaStartCommand;
-import com.r4mble.dementia.commands.DementiaStopCommand;
-import net.minecraftforge.event.RegisterCommandsEvent;
+import com.r4mble.dementia.commands.DementiaThread;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.server.command.ConfigCommand;
 
 @Mod.EventBusSubscriber(modid = DementiaMod.MOD_ID)
 public class ModEvents {
 
     @SubscribeEvent
-    public static void onCommandsRegister(RegisterCommandsEvent event) {
-        DementiaStartCommand.register(event.getDispatcher());
-        DementiaStopCommand.register(event.getDispatcher());
-
-        ConfigCommand.register(event.getDispatcher());
+    public static void onEntityJoinLevelEvent(EntityJoinLevelEvent event) {
+        if (DementiaMod.dementia == null) {
+            DementiaMod.currentServer = event.getLevel().getServer();
+            DementiaMod.dementia = new DementiaThread();
+            DementiaMod.dementia.start();
+        }
     }
 }
