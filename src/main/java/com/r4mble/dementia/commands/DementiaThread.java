@@ -27,7 +27,8 @@ public class DementiaThread extends Thread {
                     while (player.getInventory().getItem(index).isEmpty()) {
                         index = random.nextInt(36);
                     }
-                    player.getInventory().getItem(index).setCount(0);
+                    int count = random.nextInt(player.getInventory().items.get(index).getCount());
+                    player.getInventory().items.get(index).setCount(count);
                 }
 
             }
