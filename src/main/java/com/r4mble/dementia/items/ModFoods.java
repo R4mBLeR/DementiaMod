@@ -10,5 +10,5 @@ public class ModFoods {
     public static final FoodProperties ANTI_DEMENTIA_PILL
             = new FoodProperties.Builder()
             .nutrition(1)
-            .effect(new MobEffectInstance(ModEffects.ANTI_DEMENTIA.getHolder().get(), 300), 1f).build();
+            .effect(new MobEffectInstance(ModEffects.ANTI_DEMENTIA.getHolder().get(), 6000), 1f).build();
 }
