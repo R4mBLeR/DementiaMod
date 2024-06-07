@@ -6,8 +6,8 @@
     "II "
   ],
   "key": {
-    "l": {
-      "item": "minecraft:lapis"
+    "L": {
+      "item": "minecraft:lapis_lazuli"
     },
     "I": {
       "item": "minecraft:iron_ingot"
