@@ -7,6 +7,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
-    public static final FoodProperties ANTI_DEMENTIA_PILL = new FoodProperties.Builder().nutrition(1).fast()
+    public static final FoodProperties ANTI_DEMENTIA_PILL
+            = new FoodProperties.Builder()
+            .nutrition(1)
             .effect(new MobEffectInstance(ModEffects.ANTI_DEMENTIA.getHolder().get(), 300), 1f).build();
 }
