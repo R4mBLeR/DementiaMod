@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " LL",
+    "IIL",
+    "II "
+  ],
+  "key": {
+    "l": {
+      "item": "minecraft:lapis"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "dementia:anti_dementia_pill"
+  }
+}

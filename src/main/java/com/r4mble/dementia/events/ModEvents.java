@@ -1,8 +1,7 @@
 package com.r4mble.dementia.events;
 
 import com.r4mble.dementia.DementiaMod;
-import com.r4mble.dementia.commands.DementiaThread;
-import net.minecraftforge.api.distmarker.Dist;
+import com.r4mble.dementia.util.DementiaThread;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
