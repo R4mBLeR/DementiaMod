@@ -10,5 +10,5 @@ public class ModFoods {
             = new FoodProperties.Builder()
             .nutrition(1)
             .saturationMod(0f)
-            .effect(() -> new MobEffectInstance(ModEffects.ANTI_DEMENTIA.get(), 300), 1f).build();
+            .effect(() -> new MobEffectInstance(ModEffects.ANTI_DEMENTIA.get(), 6000), 1f).build();
 }
