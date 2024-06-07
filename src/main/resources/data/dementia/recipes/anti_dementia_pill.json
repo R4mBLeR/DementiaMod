@@ -1,20 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "pattern": [
-    " ll",
-    "iil",
-    "ii "
+    " LL",
+    "IIL",
+    "II "
   ],
   "key": {
-    "l": {
+    "L": {
       "item": "minecraft:lapis_lazuli"
     },
-    "i": {
+    "I": {
       "item": "minecraft:iron_ingot"
     }
   },
   "result": {
-    "item": "dementia:anti_dementia_pill"
+    "id": "dementia:anti_dementia_pill"
   }
 }
