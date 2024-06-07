@@ -1,7 +1,8 @@
-package com.r4mble.dementia.commands;
+package com.r4mble.dementia.util;
 
 import com.r4mble.dementia.Config;
 import com.r4mble.dementia.DementiaMod;
+import com.r4mble.dementia.effects.ModEffects;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.Random;
@@ -19,6 +20,9 @@ public class DementiaThread extends Thread {
             }
             for (ServerPlayer player : DementiaMod.currentServer.getPlayerList().getPlayers()) {
                 //player.setExperienceLevels(cooldownTime / 1000); //DEBUG
+                if (player.hasEffect(ModEffects.ANTI_DEMENTIA.getHolder().get())) {
+                    continue;
+                }
                 for (int remaining = Config.MAX_COUNT.get(); remaining > 0; remaining--) {
                     if (player.getInventory().isEmpty()) {
                         break;
