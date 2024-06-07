@@ -1,6 +1,14 @@
 1.20.x Changelog
+50.1
+====
+ - 50.1.0 1.20.6 RB 1
+          https://forums.minecraftforge.net/topic/149458-forge-501-minecraft-1206/
+
 50.0
 ====
+ - 50.0.37 Fix minor typo in MDK build.gradle
+ - 50.0.36 Fire EntityInteractSpecific on server side. Closes #9984
+ - 50.0.35 Unlock wrapped registries when firing register events.
  - 50.0.34 Update Bootstrap to improve the Java version check error message (#9990)
  - 50.0.33 Minor cleanup to ModListScreen and VersionChecker (#9988)
  - 50.0.32 Prevent the `@OnlyIn` being misused on `@EventBusSubscriber` and `@Mod` annotated classes (#9891)

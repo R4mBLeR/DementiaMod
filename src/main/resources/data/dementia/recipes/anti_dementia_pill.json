@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "pattern": [
-    " LL",
-    "IIL",
-    "II "
+    " ll",
+    "iil",
+    "ii "
   ],
   "key": {
-    "L": {
+    "l": {
       "item": "minecraft:lapis_lazuli"
     },
-    "I": {
+    "i": {
       "item": "minecraft:iron_ingot"
     }
   },
