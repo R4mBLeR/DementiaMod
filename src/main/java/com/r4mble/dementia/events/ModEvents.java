@@ -30,7 +30,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
-        if (event.getType() == VillagerProfession.FARMER) {
+        if (event.getType() == VillagerProfession.CLERIC) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
             // Level 3
