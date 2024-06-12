@@ -34,7 +34,7 @@ public class ModEvents {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
             // Level 3
-            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemStack(Items.EMERALD, 5),
                     new ItemStack(ModItems.ANTI_DEMENTIA_PILL.get(), 1),
                     5, 8, 0.02f));
