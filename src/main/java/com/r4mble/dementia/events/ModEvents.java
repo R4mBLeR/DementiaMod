@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-
 @Mod.EventBusSubscriber(modid = DementiaMod.MOD_ID)
 public class ModEvents {
 
