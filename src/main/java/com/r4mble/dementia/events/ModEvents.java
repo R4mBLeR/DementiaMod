@@ -9,7 +9,7 @@ import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,9 +20,9 @@ import java.util.List;
 public class ModEvents {
 
     @SubscribeEvent
-    public static void onEntityJoinLevelEvent(EntityJoinLevelEvent event) {
+    public static void onEntityJoinLevelEvent(EntityJoinWorldEvent event) {
         if (DementiaMod.dementia == null) {
-            DementiaMod.currentServer = event.getLevel().getServer();
+            DementiaMod.currentServer = event.getWorld().getServer();
             DementiaMod.dementia = new DementiaThread();
             DementiaMod.dementia.start();
         }
