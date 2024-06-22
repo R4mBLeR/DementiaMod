@@ -64,7 +64,7 @@ class TpTask extends java.util.TimerTask {
 
     @Override
     public void run() {
-        player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60));
+        player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20));
         player.setPos(pos);
     }
 }
