@@ -20,7 +20,6 @@ public class DementiaMod {
     public static final String MOD_ID = "dementia";
     public static DementiaThread dementia = null;
     public static MinecraftServer currentServer = null;
-    public static Map<String, Timer> PLAYERS_TP_POS;
 
     public DementiaMod() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.SPEC, "dementia.toml");

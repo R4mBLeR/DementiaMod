@@ -64,6 +64,9 @@ class TpTask extends java.util.TimerTask {
 
     @Override
     public void run() {
+        if (player.hasEffect(ModEffects.ANTI_DEMENTIA.get())) {
+            continue;
+        }
         player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20));
         player.setPos(pos);
     }
