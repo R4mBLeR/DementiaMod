@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.0.4a'
+version = '1.0.5'
 group = 'com.r4mble.dementia'
 archivesBaseName = 'dementia'
 
