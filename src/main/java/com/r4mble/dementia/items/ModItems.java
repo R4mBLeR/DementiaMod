@@ -24,7 +24,7 @@ public class ModItems {
                     Consumable.builder()
                             .hasConsumeParticles(false)
                             .onConsume(
-                                    new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(ModEffects.ANTI_DEMENTIA.getHolder().get(), 600, 0), 1F)
+                                    new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(ModEffects.ANTI_DEMENTIA.getHolder().get(), 6000, 0), 1F)
                             )
                             .build()
             ).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.parse( DementiaMod.MOD_ID+":anti_dementia_pill")))));
