@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "dementia:item/blue_anti_dementia_pill"
+  }
+}

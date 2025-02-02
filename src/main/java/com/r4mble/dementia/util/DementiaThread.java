@@ -6,7 +6,9 @@ import com.r4mble.dementia.effects.ModEffects;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import com.r4mble.dementia.util.TpTask;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodData;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Random;
@@ -29,10 +31,20 @@ public class DementiaThread extends Thread {
                     continue;
                 }
                 int event = random.nextInt(100);
-                if (event <= Config.TP_CHANCE.get()) {
-                    Timer timer = new Timer();
-                    TpTask tpTask = new TpTask(player);
-                    timer.schedule(tpTask, random.nextInt(60) * 1000);
+                if (event <= Config.TP_CHANCE.get() + Config.HUNGER_CHANCE.get()) {
+                    if (event <= Config.TP_CHANCE.get()) {
+                        Timer timer = new Timer();
+                        TpTask tpTask = new TpTask(player);
+                        timer.schedule(tpTask, random.nextInt(60) * 1000);
+                    } else {
+                        FoodData foodData = player.getFoodData();
+                        foodData.setFoodLevel(1);
+                        foodData.setSaturation(0);
+                        player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 60, 2));
+                        player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4));
+                        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 4));
+                    }
+
                 } else {
                     for (int remaining = Config.MAX_COUNT.get(); remaining > 0; remaining--) {
                         if (player.getInventory().isEmpty()) {
