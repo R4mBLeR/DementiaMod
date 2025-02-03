@@ -37,7 +37,12 @@ public class ModEvents {
             // Level 3
             trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 5),
-                    new ItemStack(ModItems.ANTI_DEMENTIA_PILL.get(), 1),
+                    new ItemStack(ModItems.BLUE_ANTI_DEMENTIA_PILL.get(), 1),
+                    5, 8, 0.02f));
+            
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 10),
+                    new ItemStack(ModItems.RED_ANTI_DEMENTIA_PILL.get(), 1),
                     5, 8, 0.02f));
         }
 
