@@ -4,6 +4,7 @@ import com.r4mble.dementia.DementiaMod;
 import com.r4mble.dementia.effects.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -20,7 +21,7 @@ public class ModItems {
                             .saturationMod(0)
                             .alwaysEat()
                             .effect(() -> new MobEffectInstance(ModEffects.ANTI_DEMENTIA.get(), 6000), 1f)
-                            .build())));
+                            .build()).tab(CreativeModeTab.TAB_BREWING)));
 
     public static final RegistryObject<Item> RED_ANTI_DEMENTIA_PILL = ITEMS.register("red_anti_dementia_pill",
             () -> new Item(new Item.Properties().food(
@@ -28,6 +29,6 @@ public class ModItems {
                             .nutrition(1)
                             .saturationMod(0)
                             .alwaysEat()
-                            .effect(new MobEffectInstance(ModEffects.ANTI_DEMENTIA.get(), 12000), 1f)
-                            .build())));
+                            .effect(() -> new MobEffectInstance(ModEffects.ANTI_DEMENTIA.get(), 12000), 1f)
+                            .build()).tab(CreativeModeTab.TAB_BREWING)));
 }
