@@ -21,4 +21,13 @@ public class ModItems {
                             .alwaysEdible()
                             .effect(new MobEffectInstance(ModEffects.ANTI_DEMENTIA.getHolder().get(), 6000), 1f)
                             .build())));
+
+    public static final RegistryObject<Item> RED_ANTI_DEMENTIA_PILL = ITEMS.register("red_anti_dementia_pill",
+            () -> new Item(new Item.Properties().food(
+                    new FoodProperties.Builder()
+                            .nutrition(1)
+                            .saturationModifier(0)
+                            .alwaysEdible()
+                            .effect(new MobEffectInstance(ModEffects.ANTI_DEMENTIA.getHolder().get(), 12000), 1f)
+                            .build())));
 }

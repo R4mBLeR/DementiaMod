@@ -32,6 +32,7 @@ public class DementiaMod {
     public void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(ModItems.BLUE_ANTI_DEMENTIA_PILL);
+            event.accept(ModItems.RED_ANTI_DEMENTIA_PILL);
         }
     }
 }
