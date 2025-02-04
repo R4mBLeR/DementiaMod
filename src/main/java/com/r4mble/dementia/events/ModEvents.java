@@ -64,50 +64,54 @@ public class ModEvents {
     @SubscribeEvent
     public static void onPlayerLoggedOutEvent(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
-            DementiaMod.dementiaPlayers.remove(player);
+            if (DementiaMod.dementiaPlayers.containsKey(player)) {
+                DementiaMod.dementiaPlayers.remove(player);
+            }
         }
     }
 
     @SubscribeEvent
     public static void onTickEvent(TickEvent.ServerTickEvent event) {
-        for (Map.Entry<ServerPlayer, Integer> entry : DementiaMod.dementiaPlayers.entrySet()) {
-            //DEBUG
-            //System.out.println(entry.getValue()/20);
-            entry.setValue(entry.getValue()-1);
-            if (entry.getValue() == 0) {
-                Random random = new Random();
-                int cooldownTime = random.nextInt(Config.MIN_COOLDOWN.get(), Config.MAX_COOLDOWN.get()) * 20;
-                entry.setValue(cooldownTime);
-                ServerPlayer player = entry.getKey();
-                if (player.hasEffect(ModEffects.ANTI_DEMENTIA.get())) {
-                    continue;
-                }
-                int dementiaEvent = random.nextInt(100);
-                if (dementiaEvent <= Config.TP_CHANCE.get() + Config.HUNGER_CHANCE.get()) {
-                    if (dementiaEvent <= Config.TP_CHANCE.get()) {
-                        Timer timer = new Timer();
-                        TpTask tpTask = new TpTask(player);
-                        timer.schedule(tpTask, random.nextInt(60) * 1000);
-                    } else {
-                        FoodData foodData = player.getFoodData();
-                        foodData.setFoodLevel(1);
-                        foodData.setSaturation(0);
-                        player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 60, 2));
-                        player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4));
-                        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 4));
+        if (!DementiaMod.dementiaPlayers.isEmpty()) {
+            for (Map.Entry<ServerPlayer, Integer> entry : DementiaMod.dementiaPlayers.entrySet()) {
+                //DEBUG
+                //System.out.println(entry.getValue()/20);
+                entry.setValue(entry.getValue() - 1);
+                if (entry.getValue() == 0) {
+                    Random random = new Random();
+                    int cooldownTime = random.nextInt(Config.MIN_COOLDOWN.get(), Config.MAX_COOLDOWN.get()) * 20;
+                    entry.setValue(cooldownTime);
+                    ServerPlayer player = entry.getKey();
+                    if (player.hasEffect(ModEffects.ANTI_DEMENTIA.get())) {
+                        continue;
                     }
+                    int dementiaEvent = random.nextInt(100);
+                    if (dementiaEvent <= Config.TP_CHANCE.get() + Config.HUNGER_CHANCE.get()) {
+                        if (dementiaEvent <= Config.TP_CHANCE.get()) {
+                            Timer timer = new Timer();
+                            TpTask tpTask = new TpTask(player);
+                            timer.schedule(tpTask, random.nextInt(60) * 1000);
+                        } else {
+                            FoodData foodData = player.getFoodData();
+                            foodData.setFoodLevel(1);
+                            foodData.setSaturation(0);
+                            player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 60, 2));
+                            player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4));
+                            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 4));
+                        }
 
-                } else {
-                    for (int remaining = Config.MAX_COUNT.get(); remaining > 0; remaining--) {
-                        if (player.getInventory().isEmpty()) {
-                            break;
+                    } else {
+                        for (int remaining = Config.MAX_COUNT.get(); remaining > 0; remaining--) {
+                            if (player.getInventory().isEmpty()) {
+                                break;
+                            }
+                            int index = random.nextInt(36);
+                            while (player.getInventory().getItem(index).isEmpty()) {
+                                index = random.nextInt(36);
+                            }
+                            int count = random.nextInt(player.getInventory().items.get(index).getCount());
+                            player.getInventory().items.get(index).setCount(count);
                         }
-                        int index = random.nextInt(36);
-                        while (player.getInventory().getItem(index).isEmpty()) {
-                            index = random.nextInt(36);
-                        }
-                        int count = random.nextInt(player.getInventory().items.get(index).getCount());
-                        player.getInventory().items.get(index).setCount(count);
                     }
                 }
             }
