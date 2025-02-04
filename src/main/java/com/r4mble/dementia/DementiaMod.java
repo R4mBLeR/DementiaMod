@@ -20,6 +20,7 @@ public class DementiaMod {
     public DementiaMod() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.SPEC, "dementia.toml");
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        dementiaPlayers = new HashMap<>();
 
         ModEffects.EFFECTS.register(eventBus);
         ModItems.ITEMS.register(eventBus);
