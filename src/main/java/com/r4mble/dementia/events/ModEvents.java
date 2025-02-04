@@ -52,9 +52,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event) {
-        System.out.println("DEBUG1");
         if (event.getEntity() instanceof ServerPlayer player) {
-            System.out.println("DEBUG2");
             Random random = new Random();
             int cooldownTime = random.nextInt(Config.MIN_COOLDOWN.get(), Config.MAX_COOLDOWN.get()) * 20;
 
@@ -64,9 +62,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerLoggedOutEvent(PlayerEvent.PlayerLoggedOutEvent event) {
-        System.out.println("DEBUG3");
         if (event.getEntity() instanceof ServerPlayer player) {
-            System.out.println("DEBUG4");
             DementiaMod.dementiaPlayers.remove(player);
         }
     }
@@ -75,7 +71,7 @@ public class ModEvents {
     public static void onTickEvent(TickEvent.ServerTickEvent event) {
         for (Map.Entry<ServerPlayer, Integer> entry : DementiaMod.dementiaPlayers.entrySet()) {
             //DEBUG
-            System.out.println(entry.getValue()/20);
+            //System.out.println(entry.getValue()/20);
             entry.setValue(entry.getValue()-1);
             if (entry.getValue() == 0) {
                 Random random = new Random();
