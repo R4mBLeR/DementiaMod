@@ -17,11 +17,12 @@ import java.util.HashMap;
 @Mod(DementiaMod.MOD_ID)
 public class DementiaMod {
     public static final String MOD_ID = "dementia";
-    public static HashMap<ServerPlayer, Integer> dementiaPlayers = new HashMap<>();
+    public static HashMap<ServerPlayer, Integer> dementiaPlayers;
 
     public DementiaMod() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.SPEC, "dementia.toml");
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        dementiaPlayers = new HashMap<>();
         eventBus.addListener(this::addCreative);
         
         ModEffects.EFFECTS.register(eventBus);
