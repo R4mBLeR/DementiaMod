@@ -64,9 +64,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onPlayerLoggedOutEvent(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
-            if (DementiaMod.dementiaPlayers.containsKey(player)) {
-                DementiaMod.dementiaPlayers.remove(player);
-            }
+            DementiaMod.dementiaPlayers.remove(player);
         }
     }
 
